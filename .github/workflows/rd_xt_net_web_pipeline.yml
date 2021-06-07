@@ -14,12 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkoutv@1
       - name: Print Step Name
         run: echo Build job
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkoutv@1
       - name: Print Step Name
         run: echo Build job
