@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-dotnet@v1
       - name: Restore app text
         run: echo Restore app was started
-      - name: Test For setup:
+      - name: Test For setup
         run: ls -f
       - name: Restore app
         run: dotnet restore
