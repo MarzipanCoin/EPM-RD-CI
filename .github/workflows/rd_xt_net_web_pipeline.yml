@@ -17,8 +17,8 @@ jobs:
         run: ls -f
       - name: Change directory
         run: |
-        cd RD_XT_NET_WEB_CI/
-        ls -f
+          cd RD_XT_NET_WEB_CI/
+          ls -f
       - name: Restore app text
         run: echo Restore app was started
       - name: Check directory
