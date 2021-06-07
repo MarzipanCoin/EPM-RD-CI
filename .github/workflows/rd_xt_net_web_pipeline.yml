@@ -4,18 +4,26 @@ on: [push, pull_request]
 
 jobs:
   restore:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Run a one-line script
-        run: echo Hello World!
-      - name: Print Step Name
-        run: echo Restore job
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core text
+        run: echo Setup .NET Core
+      - name: Setup .NET Core
+        run: actions/setup-dotnet@v1
+      - name: Restore app text
+        run: echo Restore app was started
+      - name: Restore app
+        run: dotnet restore
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Step Name
-        run: echo Build job
+      - name: Build app text
+        run: echo Build step was started
+      - name: Build app
+        run: dotnet build --configuration Release
   test:
     runs-on: ubuntu-latest
     steps:
