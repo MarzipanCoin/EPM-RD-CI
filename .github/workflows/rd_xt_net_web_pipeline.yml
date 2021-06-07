@@ -30,6 +30,16 @@ jobs:
           cd RD_XT_NET_WEB_CI
           ls -f
           dotnet build --configuration Release
+  run:
+    runs-on: ubuntu/latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run app text
+        run: echo 'Run app'
+      - name: Run app
+        run: |
+          cd RD_XT_NET_WEB_CI/RD_XT_NET_WEB_CI
+          dotnet run RD_XT_NET_WEB_CI.dll
   test:
     runs-on: ubuntu-latest
     steps:
