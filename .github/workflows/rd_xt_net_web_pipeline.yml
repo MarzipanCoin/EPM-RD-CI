@@ -12,7 +12,7 @@ jobs:
       - name: Setup .NET Core text
         run: echo Setup .NET Core
       - name: Setup .NET Core
-        run: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v1
       - name: Restore app text
         run: echo Restore app was started
       - name: Restore app
