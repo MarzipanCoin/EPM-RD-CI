@@ -13,6 +13,8 @@ jobs:
         run: echo Setup .NET Core
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
+      - name: Check directory
+        run: ls -f
       - name: Change directory
         run: cd RD_XT_NET_WEB_CI/
       - name: Restore app text
