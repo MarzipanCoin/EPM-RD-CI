@@ -31,7 +31,7 @@ jobs:
           ls -f
           dotnet build --configuration Release
   run:
-    runs-on: ubuntu/latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run app text
