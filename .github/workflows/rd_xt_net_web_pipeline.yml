@@ -27,11 +27,9 @@ jobs:
       - name: Build app
         run: |
           ls -f
-          cd ..
+          cd RD_XT_NET_WEB_CI
           ls -f
-        # cd RD_XT_NET_WEB_CI
-          # ls -f
-          # dotnet build --configuration Release
+          dotnet build --configuration Release
   test:
     runs-on: ubuntu-latest
     steps:
