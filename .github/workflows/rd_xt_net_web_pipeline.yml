@@ -43,5 +43,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Step Name
+      - name: Print Test app text
         run: echo Build job
+      - name: Test app
+        run: |
+          cd RD_XT_NET_WEB_CI
+          dotnet test
