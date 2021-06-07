@@ -1,0 +1,29 @@
+name: XT_NET_WEB_CI
+
+on: [push, pull-request]
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run a one-line script
+        run: echo Hello World!
+      - name: Run a multi-line script
+        run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+      - name: Print Step Name
+        run: echo Restore job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkoutv@1
+      - name: Print Step Name
+        run: echo Build job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkoutv@1
+      - name: Print Step Name
+        run: echo Build job
