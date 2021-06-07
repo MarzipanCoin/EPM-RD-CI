@@ -25,6 +25,7 @@ jobs:
         run: echo Build step was started
       - name: Build app
         run: |
+          ls -f
           cd RD_XT_NET_WEB_CI
           ls -f
           dotnet build --configuration Release
