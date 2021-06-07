@@ -1,6 +1,6 @@
 name: XT_NET_WEB_CI
 
-on: [push, pull-request]
+on: [push, pull_request]
 
 jobs:
   restore:
