@@ -50,4 +50,4 @@ jobs:
         run: |
           cd RD_XT_NET_WEB_CI
           dotnet test --logger trx
-          bash_scripts/read_trx.sh
+          sh bash_scripts/read_trx.sh
