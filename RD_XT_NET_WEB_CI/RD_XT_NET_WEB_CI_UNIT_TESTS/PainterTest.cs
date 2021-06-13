@@ -30,7 +30,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             if (_painter == null)
             {
                 _painter = Assembly.GetAssembly(
-                new ClassForTest().GetType())
+                typeof(IPainter))
                 .GetTypes()
                 .Where(t => t.GetInterfaces()
                 .Contains(typeof(IPainter)))
