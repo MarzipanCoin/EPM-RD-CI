@@ -1,0 +1,4 @@
+cd RD_XT_NET_WEB_CI_UNIT_TESTS/TestResults
+
+TRX_FILE_NAME = "$(ls -1)"
+cat TRX_FILE_NAME
