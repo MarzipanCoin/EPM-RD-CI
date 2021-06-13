@@ -51,4 +51,4 @@ jobs:
           cd RD_XT_NET_WEB_CI
           dotnet test --logger trx
           cd /home/runner/work/EPM-RD-CI/EPM-RD-CI/RD_XT_NET_WEB_CI/RD_XT_NET_WEB_CI_UNIT_TESTS/TestResults/
-          cat ls -1
+          cat ls
