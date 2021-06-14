@@ -9,9 +9,9 @@ namespace RD_XT_NET_WEB_CI
         {
             Console.WriteLine("Hello World!");
 
-            var painter = new Painter();
+            //var painter = new Painter();
 
-            Console.WriteLine(painter.GetSquare(5));
+            //Console.WriteLine(painter.GetSquare(5));
         }
     }
 }

@@ -8,8 +8,19 @@ namespace RD_XT_NET_WEB_CI.Classes
     {
         public string GetCornerTriangle(int height)
         {
+            if (height < 1)
+            {
+                return "Height can't be less than 1";
+            }
 
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            for (int i = 0; i < height; i++)
+            {
+                FillLine(i + 3, x => true, sb, i);
+                sb.Append('\n');
+            }
+
+            return sb.ToString();
         }
 
         public string GetRectangle(int length, int width)
@@ -40,8 +51,13 @@ namespace RD_XT_NET_WEB_CI.Classes
 
         public string GetStandardTriangle(int height)
         {
+            if (height < 1)
+            {
+                return "Height can't be less than 1";
+            }
+
             var sb = new StringBuilder(GetNumberOfStarsInStandardTriangle(height));
-            var countOfSpaces = height+1;
+            var countOfSpaces = height + 1;
             var countOfStars = 5;
 
             for (int i = 0; i < height; i++)
@@ -57,7 +73,7 @@ namespace RD_XT_NET_WEB_CI.Classes
                 {
                     FillLine(countOfStars, x => true, sb, i);
                     sb.Append('\n');
-                    
+
                     countOfStars += 2;
                 }
 
@@ -80,7 +96,7 @@ namespace RD_XT_NET_WEB_CI.Classes
             {
                 sb.Append('*');
 
-                FillLine(width, (x => x == 0 || x == length-1), sb, i);
+                FillLine(width, (x => x == 0 || x == length - 1), sb, i);
 
                 sb.Append('*');
                 sb.Append('\n');

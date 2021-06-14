@@ -28,7 +28,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
         }
 
         [TestMethod]
-        public void GetSquareExceptionTest()
+        public void GetSquareBadArgumentTest()
         {
             Initialize();
             // Arrange: Error message was prepared
@@ -60,7 +60,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
         }
 
         [TestMethod]
-        public void GetRectangleExceptionTest()
+        public void GetRectangleBadArgumentTest()
         {
             Initialize();
             // Arrange:
@@ -84,6 +84,37 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
         }
 
         [TestMethod]
+        public void GetCornerTriangleCorrectTest()
+        {
+            Initialize();
+            // Arrange:
+            var expectedResult = "*\n**\n***\n****\n*****\n";
+
+            // Act:
+            var actualResult = _painter.GetCornerTriangle(5);
+
+            // Assert:
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+        [TestMethod]
+        public void GetCornerTriangleBadArgumentTest()
+        {
+            Initialize();
+            // Arrange:
+            var expectedResult = "Height can't be less than 1";
+
+            // Act:
+            var actualResultZero = _painter.GetCornerTriangle(0);
+            var actualResultNegative = _painter.GetCornerTriangle(-1);
+
+            // Assert:
+            Assert.AreEqual(expectedResult, actualResultZero);
+            Assert.AreEqual(expectedResult, actualResultNegative);
+        }
+
+        [TestMethod]
         public void GetStandardTriangleCorrectTest()
         {
             Initialize();
@@ -95,6 +126,22 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
 
             // Assert:
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void GetStandardTriangleBadArgumentTest()
+        {
+            Initialize();
+            // Arrange:
+            var expectedResult = "Height can't be less than 1";
+
+            // Act:
+            var actualResultZero = _painter.GetStandardTriangle(0);
+            var actualResultNegative = _painter.GetStandardTriangle(-1);
+
+            // Assert:
+            Assert.AreEqual(expectedResult, actualResultZero);
+            Assert.AreEqual(expectedResult, actualResultNegative);
         }
 
         private void Initialize()
