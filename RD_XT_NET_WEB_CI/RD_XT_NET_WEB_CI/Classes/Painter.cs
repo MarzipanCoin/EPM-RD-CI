@@ -40,7 +40,31 @@ namespace RD_XT_NET_WEB_CI.Classes
 
         public string GetStandardTriangle(int height)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder(GetNumberOfStarsInStandardTriangle(height));
+            var countOfSpaces = height+1;
+            var countOfStars = 5;
+
+            for (int i = 0; i < height; i++)
+            {
+                FillLine(countOfSpaces, x => false, sb, i);
+
+                if (i == 0)
+                {
+                    sb.Append('*');
+                    sb.Append('\n');
+                }
+                else
+                {
+                    FillLine(countOfStars, x => true, sb, i);
+                    sb.Append('\n');
+                    
+                    countOfStars += 2;
+                }
+
+                countOfSpaces--;
+            }
+
+            return sb.ToString();
         }
 
         private void FillFigure(int length, int width, StringBuilder sb)
@@ -55,17 +79,18 @@ namespace RD_XT_NET_WEB_CI.Classes
             for (int i = 0; i < length; i++)
             {
                 sb.Append('*');
-                var point = ' ';
-                FillLine(width, length, sb, i, point);
+
+                FillLine(width, (x => x == 0 || x == length-1), sb, i);
 
                 sb.Append('*');
                 sb.Append('\n');
             }
         }
 
-        private void FillLine(int width, int length, StringBuilder sb, int i, char point)
+        private void FillLine(int width, Predicate<int> fillerPredicate, StringBuilder sb, int i)
         {
-            if (i == 0 || i == length - 1)
+            var point = ' ';
+            if (fillerPredicate(i))
             {
                 point = '*';
             }
@@ -74,6 +99,18 @@ namespace RD_XT_NET_WEB_CI.Classes
             {
                 sb.Append(point);
             }
+        }
+
+        private int GetNumberOfStarsInStandardTriangle(int height)
+        {
+            var res = 1;
+
+            for (int i = 1; i < height; i++)
+            {
+                res += 2;
+            }
+
+            return res;
         }
     }
 }

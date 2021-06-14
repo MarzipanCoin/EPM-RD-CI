@@ -83,6 +83,20 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             Assert.AreEqual(expectedResult, actualResultZeroZero);
         }
 
+        [TestMethod]
+        public void GetStandardTriangleCorrectTest()
+        {
+            Initialize();
+            // Arrange:
+            var expectedResult = "    *\n   ***\n  *****\n *******\n*********\n";
+
+            // Act:
+            var actualResult = _painter.GetStandardTriangle(5);
+
+            // Assert:
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
         private void Initialize()
         {
             if (_painter == null)
