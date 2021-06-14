@@ -15,14 +15,72 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
         public void GetSquareCorrectTest()
         {
             Initialize();
-            // Arrange: Elems was prepared for test. We get 12 and 8, and create Calculater as ICalculator<int>
+            // Arrange: Square with 5 stars side was prepared as expected result
             var expectedResult = "*****\n*   *\n*   *\n*   *\n*****\n";
 
-            //// Act: The method of Calculater was executed.
+            //// Act: Execute GetSquare
             var actualResult = _painter.GetSquare(5);
+            var actualResultOnePoint = _painter.GetSquare(1);
 
-            //// Assert: We're awaiting then 12 + 8 will equal Calculator.Summ
+            //// Assert: We're awaiting then results will be equals
             Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual("*", actualResultOnePoint);
+        }
+
+        [TestMethod]
+        public void GetSquareExceptionTest()
+        {
+            Initialize();
+            // Arrange: Error message was prepared
+            var expectedResult = "Size can't be less than 1";
+
+            // Act: Execute GetSquare with unpossible arguments
+            var actualResultWithZero = _painter.GetSquare(0);
+            var actuaResultWithNegative = _painter.GetSquare(-1);
+
+            // Assert: Expected and actual results are equals
+            Assert.AreEqual(expectedResult, actualResultWithZero);
+            Assert.AreEqual(expectedResult, actuaResultWithNegative);
+        }
+
+        [TestMethod]
+        public void GetRectangleCorrectTest()
+        {
+            Initialize();
+            // Arrange: Prepare figure with 5 stars length and 3 star width
+            var expectedResult = "***\n* *\n* *\n* *\n***\n";
+
+            // Act: Execute GetRectangle
+            var actualResult = _painter.GetRectangle(5, 3);
+            var actualResultOnePoint = _painter.GetRectangle(1, 1);
+
+            // Assert:
+            Assert.AreEqual(expectedResult, actualResult);
+            Assert.AreEqual("*", actualResultOnePoint);
+        }
+
+        [TestMethod]
+        public void GetRectangleExceptionTest()
+        {
+            Initialize();
+            // Arrange:
+            var expectedResult = "One or all sides can't be less than 1";
+
+            // Act:
+            var actualResultZeroZero = _painter.GetRectangle(0, 0);
+            var actualResultZeroOne = _painter.GetRectangle(0, 1);
+            var actualResultOneZero = _painter.GetRectangle(1, 0);
+            var actualResultNegativeOne = _painter.GetRectangle(-1, 1);
+            var actualResultOneNegative = _painter.GetRectangle(1, -1);
+            var actualResultNegativeNegative = _painter.GetRectangle(-1, -1);
+
+            //Assert:
+            Assert.AreEqual(expectedResult, actualResultOneNegative);
+            Assert.AreEqual(expectedResult, actualResultNegativeNegative);
+            Assert.AreEqual(expectedResult, actualResultOneZero);
+            Assert.AreEqual(expectedResult, actualResultNegativeOne);
+            Assert.AreEqual(expectedResult, actualResultZeroOne);
+            Assert.AreEqual(expectedResult, actualResultZeroZero);
         }
 
         private void Initialize()
