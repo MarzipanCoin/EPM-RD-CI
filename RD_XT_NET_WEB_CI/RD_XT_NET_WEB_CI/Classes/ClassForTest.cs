@@ -27,7 +27,7 @@ namespace RD_XT_NET_WEB_CI.Classes
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(TestRun));
 
-            var fileName = Directory.GetFiles(@"~/../../../RD_XT_NET_WEB_CI_UNIT_TESTS/TestResults/").LastOrDefault();
+            var fileName = Directory.GetFiles(@"~/../../../../../RD_XT_NET_WEB_CI_UNIT_TESTS/TestResults/").LastOrDefault();
 
             using (var stream = new StreamReader(fileName))
             {
