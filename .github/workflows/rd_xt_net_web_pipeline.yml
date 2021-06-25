@@ -52,4 +52,5 @@ jobs:
           dotnet test --logger trx
           ls
           sh bash_scripts/read_trx.sh
-          dotnet run
+          cd RD_XT_NET_WEB_CI
+          dotnet run RD_XT_NET_WEB_CI.dll
