@@ -31,6 +31,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
         public void GetSquareBadArgumentTest()
         {
             Initialize();
+
             // Arrange: Error message was prepared
             var expectedResult = "Size can't be less than 1";
 
