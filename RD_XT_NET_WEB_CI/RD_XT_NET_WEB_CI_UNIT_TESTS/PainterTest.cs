@@ -1,17 +1,33 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RD_XT_NET_WEB_CI.Classes;
 using System;
 using System.Linq;
 using System.Reflection;
+using NUnit;
+using NUnit.Framework;
 
 namespace RD_XT_NET_WEB_CI_UNIT_TESTS
 {
-    [TestClass]
+    [TestFixture]
     public class PainterTest
     {
         IPainter _painter;
 
-        [TestMethod]
+        [OneTimeSetUp]
+        public void Initialize()
+        {
+            if (_painter == null)
+            {
+                _painter = Assembly.GetAssembly(
+                typeof(IPainter))
+                .GetTypes()
+                .Where(t => t.GetInterfaces()
+                .Contains(typeof(IPainter)))
+                .Select(t => Activator.CreateInstance(t) as IPainter)
+                .FirstOrDefault();
+            }
+        }
+
+        [Test]
         public void GetSquareCorrectTest()
         {
             Initialize();
@@ -23,11 +39,14 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             var actualResultOnePoint = _painter.GetSquare(1);
 
             //// Assert: We're awaiting then results will be equals
-            Assert.AreEqual(expectedResult, actualResult);
-            Assert.AreEqual("*", actualResultOnePoint);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedResult, actualResult);
+                Assert.AreEqual("*", actualResultOnePoint);
+            });            
         }
 
-        [TestMethod]
+        [Test]
         public void GetSquareBadArgumentTest()
         {
             Initialize();
@@ -40,11 +59,12 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             var actuaResultWithNegative = _painter.GetSquare(-1);
 
             // Assert: Expected and actual results are equals
+            
             Assert.AreEqual(expectedResult, actualResultWithZero);
             Assert.AreEqual(expectedResult, actuaResultWithNegative);
         }
 
-        [TestMethod]
+        [Test]
         public void GetRectangleCorrectTest()
         {
             Initialize();
@@ -60,7 +80,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             Assert.AreEqual("*", actualResultOnePoint);
         }
 
-        [TestMethod]
+        [Test]
         public void GetRectangleBadArgumentTest()
         {
             Initialize();
@@ -84,7 +104,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             Assert.AreEqual(expectedResult, actualResultZeroZero);
         }
 
-        [TestMethod]
+        [Test]
         public void GetCornerTriangleCorrectTest()
         {
             Initialize();
@@ -99,7 +119,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
 
         }
 
-        [TestMethod]
+        [Test]
         public void GetCornerTriangleBadArgumentTest()
         {
             Initialize();
@@ -115,7 +135,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             Assert.AreEqual(expectedResult, actualResultNegative);
         }
 
-        [TestMethod]
+        [Test]
         public void GetStandardTriangleCorrectTest()
         {
             Initialize();
@@ -129,7 +149,7 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetStandardTriangleBadArgumentTest()
         {
             Initialize();
@@ -143,20 +163,6 @@ namespace RD_XT_NET_WEB_CI_UNIT_TESTS
             // Assert:
             Assert.AreEqual(expectedResult, actualResultZero);
             Assert.AreEqual(expectedResult, actualResultNegative);
-        }
-
-        private void Initialize()
-        {
-            if (_painter == null)
-            {
-                _painter = Assembly.GetAssembly(
-                typeof(IPainter))
-                .GetTypes()
-                .Where(t => t.GetInterfaces()
-                .Contains(typeof(IPainter)))
-                .Select(t => Activator.CreateInstance(t) as IPainter)
-                .FirstOrDefault();
-            }
         }
     }
 }
