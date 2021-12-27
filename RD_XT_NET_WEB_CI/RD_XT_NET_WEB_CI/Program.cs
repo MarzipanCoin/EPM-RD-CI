@@ -7,11 +7,7 @@ namespace RD_XT_NET_WEB_CI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            var painter = new Painter();
-
-            Console.WriteLine(painter.GetSquare(5));
+            new TestResultWorker().Work();
         }
     }
 }
